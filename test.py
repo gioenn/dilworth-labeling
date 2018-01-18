@@ -24,7 +24,7 @@ def testInfRandom(n, p):
         assert G.get_parallelism()!=G.label()
 
 
-def testExampleInstance():
+def testExample():
     G = LabeledDiGraph()
     G.add_edge(0, 1)
     G.add_edge(1, 4)
