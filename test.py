@@ -5,23 +5,18 @@ import sys
 
 def testRandom(n, p):
     G = random(n, p)
-    chains, antichain, num_labels = G.label()
-
+    chains = G.label()
     print("chains: "+str(chains))
-    print("antichain: "+str(antichain))
-    assert G.get_parallelism() != G.label()
+    assert G.get_parallelism() == len(chains)
 
     render(G)
 
 def testInfRandom(n, p):
     while True:
         G = random(n, p)
-        chains, antichain, num_labels = G.label()
-
+        chains = G.label()
         print("chains: "+str(chains))
-        print("antichain: "+str(antichain))
-
-        assert G.get_parallelism()!=G.label()
+        assert G.get_parallelism() == len(chains)
 
 
 def testExample():
@@ -37,14 +32,12 @@ def testExample():
     G.add_edge(5, 7)
     G.add_edge(6, 7)
 
-    chains, antichain, num_labels = G.label()
+    chains = G.label()
 
     print("chains: "+str(chains))
-    print("antichain: "+str(antichain))
-
-    assert G.get_parallelism() != G.label()
+    assert G.get_parallelism() == len(chains)
 
     render(G)
 
 if __name__ == "__main__":
-    testRandom(int(sys.argv[1]), float(sys.argv[2]))
+    testInfRandom(10, 0.2)

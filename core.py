@@ -3,14 +3,14 @@ import networkx as nx
 class LabeledDiGraph(nx.DiGraph):
 
     def label(self):
-        chains, antichain = self.__bogart()
+        chains = self.__bogart()
         id = 0
         for chain in chains:
             for n in chain:
                 self.node[n]['label'] = id
             id+=1
 
-        return chains, antichain, id
+        return chains
 
     def get_parallelism(self):
         return max(map(lambda x: len(x), list(nx.antichains(self))))
@@ -32,14 +32,14 @@ class LabeledDiGraph(nx.DiGraph):
             oldchains = list(self.C)
             self.__reduce()
 
-        return list(self.C), list(self.E)
+        return list(self.C)
 
     def __reduce(self):
 
         N = []
         M = []
+        E = []
 
-        self.E = []
         self.USED = {}
         self.PAIR = {}
 
@@ -49,7 +49,7 @@ class LabeledDiGraph(nx.DiGraph):
 
         for c in self.C:
             N.append(c[0])
-            self.E.append(c[0])
+            E.append(c[0])
 
         while len(N) > 0:
             for a in N:
@@ -61,7 +61,7 @@ class LabeledDiGraph(nx.DiGraph):
                             aa = T[1]
                             self.PAIR[aa] = (a, b)
                             self.USED[b] = True
-                            self.E.append(aa)
+                            E.append(aa)
                             M.append(aa)
                         else:
                             return self.__redochains(a, b)
@@ -69,7 +69,6 @@ class LabeledDiGraph(nx.DiGraph):
             M = []
 
     def __redochains(self, a, b):
-
         self.__modtail(b, self.__TAIL(a))
 
         if self.PAIR[a]:
@@ -90,9 +89,12 @@ class LabeledDiGraph(nx.DiGraph):
                 del c[index:]
                 c.extend(tail)
 
-    def __printtails(self):
+    def __logtails(self):
+        res = "[ "
         for n in self.nodes():
-            print(str(n)+":"+" "+str(self.__TAIL(self.C,n)))
+            res+=str(n)+":"+" "+str(self.__TAIL(n))+" "
+        res+="]"
+        print(res)
 
 
 def random(n, p):

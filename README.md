@@ -2,13 +2,13 @@
 
 Direct Acyclic Graph (DAG) labeling with Dilworth's theorem and Bogart-Magagnosc's algorithm
 
-#### REQUIREMENTS
+#### PREREQUISITES
 - Python 2.7
 - pip
 
-#### INSTALL MODULES
+#### INSTALL REQUIREMENTS
 
-```pip install -r modules.txt```
+```pip install -r requirements.txt```
 
 #### TEST
 
