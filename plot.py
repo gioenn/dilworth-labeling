@@ -5,7 +5,7 @@ def render(G):
 
     for n in sorted(G.nodes()):
         if "label" in G.node[n]:
-            dot.node(str(n), "S{}\n<{}>".format(n, G.node[n]["label"]))
+            dot.node(str(n), "V{}\n<{}>".format(n, G.node[n]["label"]))
         else:
             dot.node(str(n), "S{}".format(n))
 
