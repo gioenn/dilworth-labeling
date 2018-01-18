@@ -1,6 +1,6 @@
 ## DILWORTH-LABELING
 
-Direct Acyclic Graph (DAG) labeling with Dilworth's theorem and Bogart-Magagnosc's algorithm
+Direct Acyclic Graphs (DAG) labeling with Dilworth's theorem and Bogart-Magagnosc's algorithm
 
 #### PREREQUISITES
 - Python 2.7
@@ -16,6 +16,6 @@ Direct Acyclic Graph (DAG) labeling with Dilworth's theorem and Bogart-Magagnosc
 
 #### EXAMPLE
 
-DAG with 8 vertices labeled with 3 labels
+DAG with 8 vertices labeled with 3 identifiers (one per chain).
 
 <img src="https://github.com/gioenn/dilworth-labeling/blob/master/example.png" width="400"/>
