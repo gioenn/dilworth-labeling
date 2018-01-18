@@ -1,6 +1,7 @@
 from core import LabeledDiGraph
 from core import random
 from plot import render
+import sys
 
 def testRandom(n, p):
     G = random(n, p)
@@ -23,7 +24,7 @@ def testInfRandom(n, p):
         assert G.get_parallelism()!=G.label()
 
 
-def testInstance():
+def testExampleInstance():
     G = LabeledDiGraph()
     G.add_edge(0, 1)
     G.add_edge(1, 4)
@@ -46,4 +47,4 @@ def testInstance():
     render(G)
 
 if __name__ == "__main__":
-    testInfRandom(20, 0.2)
+    testRandom(int(sys.argv[1]), float(sys.argv[2]))
