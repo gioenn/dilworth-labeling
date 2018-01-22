@@ -40,4 +40,4 @@ def testExample():
     render(G)
 
 if __name__ == "__main__":
-    testInfRandom(10, 0.2)
+    testRandom(int(sys.argv[1]), float(sys.argv[2]))
